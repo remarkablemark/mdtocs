@@ -1,0 +1,2 @@
+# Ignore test Markdown files
+src/__fixtures__/*.md
