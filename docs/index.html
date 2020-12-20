@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,shrink-to-fit=no"
+    />
+    <meta name="description" content="Markdown table of contents generator." />
+    <title>mdtocs - Markdown to Table of Contents</title>
+
+    <!--
+      Normalize.css, MDC Web styles, Material Icons, Roboto font
+    -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/material-components-web@8.0.0/dist/material-components-web.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+    />
+
+    <!--
+      Custom styles
+    -->
+    <style>
+      main {
+        display: block;
+        padding: 0 1rem;
+        margin: 0 auto;
+        max-width: 62.5rem; /* 1000px */
+      }
+
+      .mdc-text-field--textarea {
+        margin: 0 1rem 2rem 0;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <main>
+      <h1 class="mdc-typography--headline2 mdc-theme--primary">mdtocs</h1>
+      <h2 class="mdc-typography--headline4">Markdown to Table of Contents</h2>
+
+      <label
+        class="mdc-text-field mdc-text-field--outlined mdc-text-field--textarea"
+      >
+        <span class="mdc-notched-outline">
+          <span class="mdc-notched-outline__leading"></span>
+          <span class="mdc-notched-outline__notch">
+            <span class="mdc-floating-label" id="md-label">Markdown</span>
+          </span>
+          <span class="mdc-notched-outline__trailing"></span>
+        </span>
+        <span class="mdc-text-field__resizer">
+          <textarea
+            class="mdc-text-field__input"
+            rows="10"
+            cols="50"
+            aria-labelledby="md-label"
+            aria-label="Markdown"
+            placeholder="Markdown"
+            autofocus
+          ></textarea>
+        </span>
+      </label>
+
+      <label
+        class="mdc-text-field mdc-text-field--outlined mdc-text-field--textarea mdc-text-field--disabled"
+      >
+        <span class="mdc-notched-outline">
+          <span class="mdc-notched-outline__leading"></span>
+          <span class="mdc-notched-outline__notch">
+            <span class="mdc-floating-label" id="toc-label">
+              Table of Contents
+            </span>
+          </span>
+          <span class="mdc-notched-outline__trailing"></span>
+        </span>
+        <span class="mdc-text-field__resizer">
+          <textarea
+            class="mdc-text-field__input"
+            rows="10"
+            cols="50"
+            aria-labelledby="toc-label"
+            aria-label="Table of Contents"
+            disabled
+          ></textarea>
+        </span>
+      </label>
+
+      <div>
+        <button class="mdc-button mdc-button--raised">
+          <span class="mdc-button__ripple"></span>
+          <i class="material-icons mdc-button__icon" aria-hidden="true">
+            file_copy
+          </i>
+          <span class="mdc-button__label">Copy Table of Contents</span>
+        </button>
+      </div>
+    </main>
+
+    <!--
+      Global site tag (gtag.js) - Google Analytics
+    -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-59233605-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-59233605-1');
+    </script>
+
+    <!--
+      MDC Web JS: https://material-components.github.io/material-components-web-catalog/
+    -->
+    <script src="https://unpkg.com/material-components-web@8.0.0/dist/material-components-web.min.js"></script>
+
+    <!--
+      Custom script
+    -->
+    <script src="script.js" async></script>
+
+    <!--
+      GitHub Corners: https://github.com/remarkablemark/github-corners
+    -->
+    <script
+      src="https://unpkg.com/github-corners/dist/embed.min.js"
+      data-href="https://github.com/remarkablemark/mdtocs"
+      data-target="_blank"
+      async
+      defer
+    ></script>
+  </body>
+</html>
