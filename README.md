@@ -12,16 +12,16 @@
 mdtocs(string)
 ```
 
-Example:
+This library uses [regex](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Regular_Expressions) to parse [Markdown headings](https://www.markdownguide.org/basic-syntax/#headings). As a result, edge cases like headings with links and images won't be generated correctly. Inspired by the [blog post](http://b.remarkabl.org/3rgdgCk).
+
+#### Example
 
 ```js
 const { mdtocs } = require('mdtocs');
 mdtocs('# Hello, World!'); // '- [Hello, World!](#hello-world)'
 ```
 
-This library uses [regex](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Regular_Expressions) to parse [Markdown headings](https://www.markdownguide.org/basic-syntax/#headings). As a result, edge cases like headings with links and images won't be generated correctly. Inspired by the [blog post](http://b.remarkabl.org/3rgdgCk).
-
-[Demo](https://remarkablemark.org/mdtocs/) | [Repl.it](https://repl.it/@remarkablemark/mdtocs) | [JSFiddle](https://jsfiddle.net/remarkablemark/dr03pLxn/)
+[Site](https://b.remarkabl.org/mdtocs) | [Repl.it](https://repl.it/@remarkablemark/mdtocs) | [JSFiddle](https://jsfiddle.net/remarkablemark/dr03pLxn/)
 
 ## Install
 
