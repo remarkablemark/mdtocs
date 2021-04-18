@@ -1,4 +1,3 @@
-const HEADINGS_REGEX = /^(#{1,6}[ \t].+)$|^(.+[\r\n][=-]{3,})$/gm;
 const HEADING_REGEX = /^(#+)[ \t](.+)$|^(.+)[\r\n]([=-])/;
 const WHITESPACE_REGEX = /\s/;
 const INVALID_FRAGMENT_REGEX = /[^a-zA-Z0-9_-]/g;
@@ -15,8 +14,8 @@ const NEWLINE = '\n';
  */
 export function mdtocs(markdown: string): string {
   validateMarkdown(markdown);
-  const headings = markdown.match(HEADINGS_REGEX);
 
+  const headings = matchHeadings(markdown);
   if (headings === null) {
     return '';
   }
@@ -87,6 +86,15 @@ function validateMarkdown(markdown: string): void {
   if (typeof markdown !== 'string') {
     throw new TypeError('First argument must be a string');
   }
+}
+
+const HEADINGS_REGEX = /^(#{1,6}[ \t].+)$|^(.+[\r\n][=-]{3,})$/gm;
+
+/**
+ * Matches headings regex.
+ */
+function matchHeadings(markdown: string) {
+  return markdown.match(HEADINGS_REGEX);
 }
 
 /**
