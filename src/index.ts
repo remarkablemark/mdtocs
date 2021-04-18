@@ -10,8 +10,6 @@ const MARKDOWN_INDENT_LENGTH = 2;
 const MARKDOWN_INDENT = Array(MARKDOWN_INDENT_LENGTH + 1).join(SPACE); // SPACE + SPACE
 const NEWLINE = '\n';
 
-type FragmentCountMap = Record<string, number>;
-
 /**
  * Generates table of contents given Markdown.
  */
@@ -29,7 +27,7 @@ export function mdtocs(markdown: string): string {
   let result = '';
   let previousLevel = null;
   let indent = '';
-  const fragmentCountMap: FragmentCountMap = {};
+  const fragments: Record<string, number> = {};
 
   for (let i = 0, len = headings.length; i < len; i++) {
     const heading = headings[i].match(HEADING_REGEX);
@@ -69,13 +67,13 @@ export function mdtocs(markdown: string): string {
     previousLevel = currentLevel;
 
     let fragment = getFragment(headingText);
-    const fragmentCount = fragmentCountMap[fragment];
+    const fragmentCount = fragments[fragment];
 
     if (fragmentCount > 0) {
-      fragmentCountMap[fragment] += 1;
+      fragments[fragment] += 1;
       fragment += '-' + fragmentCount;
     } else if (fragmentCount === undefined) {
-      fragmentCountMap[fragment] = 1;
+      fragments[fragment] = 1;
     }
 
     result +=
