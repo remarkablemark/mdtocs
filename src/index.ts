@@ -13,24 +13,6 @@ const NEWLINE = '\n';
 type FragmentCountMap = Record<string, number>;
 
 /**
- * Transforms heading to URL fragment (without #).
- */
-function getFragment(heading: string): string {
-  return heading
-    .toLowerCase()
-    .split(WHITESPACE_REGEX)
-    .join('-')
-    .replace(INVALID_FRAGMENT_REGEX, '');
-}
-
-/**
- * Transforms heading and fragment to Markdown.
- */
-function getLink(heading: string, fragment: string): string {
-  return '[' + heading + '](#' + fragment + ')';
-}
-
-/**
  * Generates table of contents given Markdown.
  */
 export function mdtocs(markdown: string): string {
@@ -101,4 +83,22 @@ export function mdtocs(markdown: string): string {
   }
 
   return result;
+}
+
+/**
+ * Transforms heading to URL fragment (without #).
+ */
+function getFragment(heading: string): string {
+  return heading
+    .toLowerCase()
+    .split(WHITESPACE_REGEX)
+    .join('-')
+    .replace(INVALID_FRAGMENT_REGEX, '');
+}
+
+/**
+ * Transforms heading and fragment to Markdown.
+ */
+function getLink(heading: string, fragment: string): string {
+  return '[' + heading + '](#' + fragment + ')';
 }
