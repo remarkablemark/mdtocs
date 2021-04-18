@@ -14,10 +14,7 @@ const NEWLINE = '\n';
  * Generates table of contents given Markdown.
  */
 export function mdtocs(markdown: string): string {
-  if (typeof markdown !== 'string') {
-    throw new TypeError('First argument must be a string');
-  }
-
+  validateMarkdown(markdown);
   const headings = markdown.match(HEADINGS_REGEX);
 
   if (headings === null) {
@@ -81,6 +78,15 @@ export function mdtocs(markdown: string): string {
   }
 
   return result;
+}
+
+/**
+ * Validates markdown.
+ */
+function validateMarkdown(markdown: string): void {
+  if (typeof markdown !== 'string') {
+    throw new TypeError('First argument must be a string');
+  }
 }
 
 /**
