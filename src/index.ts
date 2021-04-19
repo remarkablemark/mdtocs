@@ -14,69 +14,7 @@ const NEWLINE = '\n';
  */
 export function mdtocs(markdown: string): string {
   validateMarkdown(markdown);
-
-  const headings = matchHeadings(markdown);
-  if (headings === null) {
-    return '';
-  }
-
-  let result = '';
-  let previousLevel = null;
-  let indent = '';
-  const fragments: Record<string, number> = {};
-
-  for (let i = 0, len = headings.length; i < len; i++) {
-    const heading = headings[i].match(HEADING_REGEX);
-
-    if (heading === null) {
-      continue;
-    }
-
-    let currentLevel;
-    let headingText;
-
-    // get heading level and text
-    if (heading[4]) {
-      headingText = heading[3].trim();
-      if (!headingText) {
-        continue;
-      }
-      currentLevel = heading[4] === HYPHEN ? 2 : 1;
-    } else {
-      headingText = heading[2].trim();
-      if (!headingText) {
-        continue;
-      }
-      currentLevel = heading[1].length;
-    }
-
-    // build indent
-    if (!previousLevel) {
-      // continue
-    } else if (currentLevel === 1) {
-      indent = '';
-    } else if (currentLevel > previousLevel) {
-      indent += MARKDOWN_INDENT;
-    } else if (currentLevel < previousLevel) {
-      indent = indent.slice(MARKDOWN_INDENT_LENGTH);
-    }
-    previousLevel = currentLevel;
-
-    let fragment = getFragment(headingText);
-    const fragmentCount = fragments[fragment];
-
-    if (fragmentCount > 0) {
-      fragments[fragment] += 1;
-      fragment += '-' + fragmentCount;
-    } else if (fragmentCount === undefined) {
-      fragments[fragment] = 1;
-    }
-
-    result +=
-      indent + MARKDOWN_BULLET + getLink(headingText, fragment) + NEWLINE;
-  }
-
-  return result;
+  return transformMarkdownHeadings(parseMarkdownHeadings(markdown));
 }
 
 /**
@@ -90,11 +28,88 @@ function validateMarkdown(markdown: string): void {
 
 const HEADINGS_REGEX = /^(#{1,6}[ \t].+)$|^(.+[\r\n][=-]{3,})$/gm;
 
+type Heading = {
+  level: number;
+  text: string;
+  fragment: string;
+  previous?: Heading;
+};
+
 /**
- * Matches headings regex.
+ * Parses markdown headings.
  */
-function matchHeadings(markdown: string) {
-  return markdown.match(HEADINGS_REGEX);
+function parseMarkdownHeadings(markdown: string): Heading[] {
+  const headings = markdown.match(HEADINGS_REGEX);
+
+  if (headings === null) {
+    return [];
+  }
+
+  const fragments: Record<string, number> = {};
+  const initialHeadings: Heading[] = [];
+
+  return headings.reduce((accumulator, currentHeading, index) => {
+    const headingMatch = currentHeading.match(HEADING_REGEX);
+
+    if (headingMatch === null) {
+      return accumulator;
+    }
+
+    let level;
+    let text;
+
+    // get heading level and text
+    if (headingMatch[4]) {
+      text = headingMatch[3].trim();
+      if (!text) {
+        return accumulator;
+      }
+      level = headingMatch[4] === HYPHEN ? 2 : 1;
+    } else {
+      text = headingMatch[2].trim();
+      if (!text) {
+        return accumulator;
+      }
+      level = headingMatch[1].length;
+    }
+
+    let fragment = getFragment(text);
+    const fragmentCount = fragments[fragment];
+
+    if (fragmentCount) {
+      fragments[fragment] += 1;
+      fragment += '-' + fragmentCount;
+    } else {
+      fragments[fragment] = 1;
+    }
+
+    const previous = accumulator[index - 1];
+
+    const current = {
+      level,
+      text,
+      fragment,
+      previous,
+    };
+
+    return accumulator.concat(current);
+  }, initialHeadings);
+}
+
+/**
+ * Transforms parsed markdown headings to table of contents list.
+ */
+function transformMarkdownHeadings(headings: Heading[]): string {
+  return headings.reduce((accumulator, heading) => {
+    const { level, text, fragment } = heading;
+    return (
+      accumulator +
+      MARKDOWN_INDENT.repeat(level - 1) +
+      MARKDOWN_BULLET +
+      getLink(text, fragment) +
+      NEWLINE
+    );
+  }, '');
 }
 
 /**
