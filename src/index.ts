@@ -35,6 +35,8 @@ type Heading = {
   previous?: Heading;
 };
 
+type Fragments = Record<string, number>;
+
 /**
  * Parses markdown headings.
  */
@@ -45,7 +47,7 @@ function parseMarkdownHeadings(markdown: string): Heading[] {
     return [];
   }
 
-  const fragments: Record<string, number> = {};
+  const fragments: Fragments = {};
   const initialHeadings: Heading[] = [];
 
   return headings.reduce((accumulator, currentHeading, index) => {
@@ -73,15 +75,7 @@ function parseMarkdownHeadings(markdown: string): Heading[] {
       level = headingMatch[1].length;
     }
 
-    let fragment = getFragment(text);
-    const fragmentCount = fragments[fragment];
-
-    if (fragmentCount) {
-      fragments[fragment] += 1;
-      fragment += '-' + fragmentCount;
-    } else {
-      fragments[fragment] = 1;
-    }
+    const fragment = createFragment(text, fragments);
 
     const previous = accumulator[index - 1];
 
@@ -106,26 +100,36 @@ function transformMarkdownHeadings(headings: Heading[]): string {
       accumulator +
       MARKDOWN_INDENT.repeat(level - 1) +
       MARKDOWN_BULLET +
-      getLink(text, fragment) +
+      createLink(text, fragment) +
       NEWLINE
     );
   }, '');
 }
 
 /**
- * Transforms heading to URL fragment (without #).
+ * Creates fragment from heading text.
  */
-function getFragment(heading: string): string {
-  return heading
+function createFragment(text: string, fragments: Fragments): string {
+  const fragment = text
     .toLowerCase()
     .split(WHITESPACE_REGEX)
     .join('-')
     .replace(INVALID_FRAGMENT_REGEX, '');
+
+  const count = fragments[fragment];
+
+  if (count) {
+    fragments[fragment]++;
+    return fragment + HYPHEN + count;
+  }
+
+  fragments[fragment] = 1;
+  return fragment;
 }
 
 /**
- * Transforms heading and fragment to Markdown.
+ * Creates link from heading text and fragment.
  */
-function getLink(heading: string, fragment: string): string {
-  return '[' + heading + '](#' + fragment + ')';
+function createLink(text: string, fragment: string): string {
+  return '[' + text + '](#' + fragment + ')';
 }
