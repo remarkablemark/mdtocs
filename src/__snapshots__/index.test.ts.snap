@@ -29,9 +29,12 @@ exports[`mdtocs generates table of contents for markdown with heading with inval
 `;
 
 exports[`mdtocs generates table of contents for markdown with headings 1`] = `
-"        - [Heading level 6](#heading-level-6)
-      - [Heading with tab](#heading-with-tab)
-      - [Heading with spaces](#heading-with-spaces)
+"          - [Heading level 6](#heading-level-6)
+  - [Heading with tab](#heading-with-tab)
+  - [Heading with spaces](#heading-with-spaces)
+    - [Heading 3](#heading-3)
+      - [Heading 4](#heading-4)
+- [Heading 1](#heading-1)
 - [Heading level 1](#heading-level-1)
 - [Heading Level 1!](#heading-level-1-1)
 - [Alternate heading Level 1](#alternate-heading-level-1)
