@@ -1,14 +1,3 @@
-const HEADING_REGEX = /^(#+)[ \t](.+)$|^(.+)[\r\n]([=-])/;
-const WHITESPACE_REGEX = /\s/;
-const INVALID_FRAGMENT_REGEX = /[^a-zA-Z0-9_-]/g;
-
-const SPACE = ' ';
-const HYPHEN = '-';
-const MARKDOWN_BULLET = HYPHEN + SPACE;
-const MARKDOWN_INDENT_LENGTH = 2;
-const MARKDOWN_INDENT = Array(MARKDOWN_INDENT_LENGTH + 1).join(SPACE); // SPACE + SPACE
-const NEWLINE = '\n';
-
 /**
  * Generates table of contents given Markdown.
  */
@@ -27,6 +16,8 @@ function validateMarkdown(markdown: string): void {
 }
 
 const HEADINGS_REGEX = /^(#{1,6}[ \t].+)$|^(.+[\r\n][=-]{3,})$/gm;
+const HEADING_REGEX = /^(#+)[ \t](.+)$|^(.+)[\r\n]([=-])/;
+const HYPHEN = '-';
 
 type Heading = {
   level: number;
@@ -75,20 +66,19 @@ function parseMarkdownHeadings(markdown: string): Heading[] {
       level = headingMatch[1].length;
     }
 
-    const fragment = createFragment(text, fragments);
-
-    const previous = accumulator[index - 1];
-
-    const current = {
+    return accumulator.concat({
       level,
       text,
-      fragment,
-      previous,
-    };
-
-    return accumulator.concat(current);
+      fragment: createFragment(text, fragments),
+      previous: accumulator[index - 1],
+    });
   }, initialHeadings);
 }
+
+const SPACE = ' ';
+const INDENT = SPACE.repeat(2);
+const BULLET = HYPHEN + SPACE;
+const NEWLINE = '\n';
 
 /**
  * Transforms parsed markdown headings to table of contents list.
@@ -98,13 +88,16 @@ function transformMarkdownHeadings(headings: Heading[]): string {
     const { level, text, fragment } = heading;
     return (
       accumulator +
-      MARKDOWN_INDENT.repeat(level - 1) +
-      MARKDOWN_BULLET +
+      INDENT.repeat(level - 1) +
+      BULLET +
       createLink(text, fragment) +
       NEWLINE
     );
   }, '');
 }
+
+const WHITESPACE_REGEX = /\s/;
+const INVALID_FRAGMENT_REGEX = /[^a-zA-Z0-9_-]/g;
 
 /**
  * Creates fragment from heading text.
