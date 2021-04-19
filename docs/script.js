@@ -4,13 +4,15 @@ script.src =
   location.hostname === ''
     ? '../umd/mdtocs.min.js'
     : 'https://unpkg.com/mdtocs@latest/umd/mdtocs.min.js';
-document.body.appendChild(script);
+document.body.append(script);
 
 // Initialize app
 script.addEventListener('load', function () {
   var mdtocs = window.mdtocs.mdtocs;
   var MDCTextField = window.mdc.textField.MDCTextField;
   var MDCRipple = window.mdc.ripple.MDCRipple;
+  var prettier = window.prettier;
+  var prettierOptions = { parser: 'markdown', plugins: window.prettierPlugins };
 
   // Instantiate MDC elements
   var textFields = document.querySelectorAll('.mdc-text-field--textarea');
@@ -23,8 +25,8 @@ script.addEventListener('load', function () {
   md.listen('input', function (event) {
     var markdown = event.target.value;
     var tableOfContents = mdtocs(markdown);
-    tocFloatLabel(tableOfContents);
-    toc.value = tableOfContents;
+    tocFloatLabel(Boolean(tableOfContents));
+    toc.value = prettier.format(tableOfContents, prettierOptions);
   });
 
   // Copy table of contents to clipboard
