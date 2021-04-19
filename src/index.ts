@@ -21,6 +21,9 @@ function validateMarkdown(markdown: string): void {
   }
 }
 
+/**
+ * @see {@link https://www.markdownguide.org/basic-syntax/}
+ */
 const HEADINGS_REGEX = /^(#{1,6}[ \t].+)$|^(.+[\r\n][=-]{3,})$/gm;
 const HEADING_REGEX = /^(#+)[ \t](.+)$|^(.+)[\r\n]([=-])/;
 const HYPHEN = '-';
@@ -29,7 +32,6 @@ type Heading = {
   level: number;
   text: string;
   fragment: string;
-  previous?: Heading;
 };
 type Fragments = Record<string, number>;
 
@@ -47,40 +49,52 @@ function parseMarkdownHeadings(markdown: string): Heading[] {
   }
 
   const fragments: Fragments = {};
-  const initialHeadings: Heading[] = [];
+  const initialValue: Heading[] = [];
 
-  return headings.reduce((accumulator, currentHeading, index) => {
+  return headings.reduce((accumulator, currentHeading) => {
     const headingMatch = currentHeading.match(HEADING_REGEX);
 
     if (headingMatch === null) {
       return accumulator;
     }
 
-    let level;
-    let text;
+    const [
+      ,
+      headingLevel,
+      headingText,
+      headingTextAlternate,
+      headingLevelAlternate,
+    ] = headingMatch;
 
-    // get heading level and text
-    if (headingMatch[4]) {
-      text = headingMatch[3].trim();
-      if (!text) {
-        return accumulator;
-      }
-      level = headingMatch[4] === HYPHEN ? 2 : 1;
+    let text;
+    let level;
+
+    // Heading level 1
+    // ===
+    // Heading level 2
+    // ---
+    if (headingLevelAlternate) {
+      text = headingTextAlternate.trim();
+      level = headingLevelAlternate === HYPHEN ? 2 : 1;
+
+      // # Heading level 1
+      // ...
+      // ###### Heading level 6
     } else {
-      text = headingMatch[2].trim();
-      if (!text) {
-        return accumulator;
-      }
-      level = headingMatch[1].length;
+      text = headingText.trim();
+      level = headingLevel.length;
+    }
+
+    if (!text) {
+      return accumulator;
     }
 
     return accumulator.concat({
       level,
       text,
       fragment: createFragment(text, fragments),
-      previous: accumulator[index - 1],
     });
-  }, initialHeadings);
+  }, initialValue);
 }
 
 const SPACE = ' ';
