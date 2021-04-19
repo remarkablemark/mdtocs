@@ -1,6 +1,6 @@
 {
   "name": "mdtocs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Markdown table of contents generator.",
   "author": "Mark <mark@remarkablemark.org>",
   "main": "cjs/index.js",
