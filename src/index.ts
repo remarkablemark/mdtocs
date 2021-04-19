@@ -51,50 +51,66 @@ function parseMarkdownHeadings(markdown: string): Heading[] {
   const fragments: Fragments = {};
   const initialValue: Heading[] = [];
 
-  return headings.reduce((accumulator, currentHeading) => {
-    const headingMatch = currentHeading.match(HEADING_REGEX);
+  return headings.reduce((accumulator, heading) => {
+    const [level, text] = getHeadingLevelAndText(heading);
 
-    if (headingMatch === null) {
-      return accumulator;
+    if (level && text) {
+      accumulator.push({
+        level,
+        text,
+        fragment: createFragment(text, fragments),
+      });
     }
 
-    const [
-      ,
-      headingLevel,
-      headingText,
-      headingTextAlternate,
-      headingLevelAlternate,
-    ] = headingMatch;
-
-    let text;
-    let level;
-
-    // Heading level 1
-    // ===
-    // Heading level 2
-    // ---
-    if (headingLevelAlternate) {
-      text = headingTextAlternate.trim();
-      level = headingLevelAlternate === HYPHEN ? 2 : 1;
-
-      // # Heading level 1
-      // ...
-      // ###### Heading level 6
-    } else {
-      text = headingText.trim();
-      level = headingLevel.length;
-    }
-
-    if (!text) {
-      return accumulator;
-    }
-
-    return accumulator.concat({
-      level,
-      text,
-      fragment: createFragment(text, fragments),
-    });
+    return accumulator;
   }, initialValue);
+}
+
+/**
+ * Gets heading level and text.
+ *
+ * @param {string} heading - The markdown heading.
+ * @return {Array} - The heading level and text.
+ */
+function getHeadingLevelAndText(heading: string): [] | [number, string] {
+  const headingMatch = heading.match(HEADING_REGEX);
+
+  if (headingMatch === null) {
+    return [];
+  }
+
+  const [
+    ,
+    headingLevel,
+    headingText,
+    headingTextAlternate,
+    headingLevelAlternate,
+  ] = headingMatch;
+
+  let text;
+  let level;
+
+  // Heading level 1
+  // ===
+  // Heading level 2
+  // ---
+  if (headingLevelAlternate) {
+    level = headingLevelAlternate === HYPHEN ? 2 : 1;
+    text = headingTextAlternate.trim();
+
+    // # Heading level 1
+    // ...
+    // ###### Heading level 6
+  } else {
+    level = headingLevel.length;
+    text = headingText.trim();
+  }
+
+  if (!text) {
+    return [];
+  }
+
+  return [level, text];
 }
 
 const SPACE = ' ';
