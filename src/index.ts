@@ -1,5 +1,8 @@
 /**
  * Generates table of contents given Markdown.
+ *
+ * @param {string} markdown - The markdown.
+ * @return {string} - The table of contents.
  */
 export function mdtocs(markdown: string): string {
   validateMarkdown(markdown);
@@ -8,6 +11,9 @@ export function mdtocs(markdown: string): string {
 
 /**
  * Validates markdown.
+ *
+ * @param {string} markdown - The markdown.
+ * @throws {TypeError} - The first argument must be a string.
  */
 function validateMarkdown(markdown: string): void {
   if (typeof markdown !== 'string') {
@@ -25,11 +31,13 @@ type Heading = {
   fragment: string;
   previous?: Heading;
 };
-
 type Fragments = Record<string, number>;
 
 /**
- * Parses markdown headings.
+ * Parses headings from markdown.
+ *
+ * @param {string} markdown - The markdown.
+ * @return {Heading[]} - The headings.
  */
 function parseMarkdownHeadings(markdown: string): Heading[] {
   const headings = markdown.match(HEADINGS_REGEX);
@@ -101,6 +109,10 @@ const INVALID_FRAGMENT_REGEX = /[^a-zA-Z0-9_-]/g;
 
 /**
  * Creates fragment from heading text.
+ *
+ * @param {string} text - The heading text.
+ * @param {Fragments} fragments - The fragment to count map.
+ * @return {string} - The fragment.
  */
 function createFragment(text: string, fragments: Fragments): string {
   const fragment = text
@@ -122,6 +134,10 @@ function createFragment(text: string, fragments: Fragments): string {
 
 /**
  * Creates link from heading text and fragment.
+ *
+ * @param {string} text - The heading text.
+ * @param {string} fragment - The fragment.
+ * @return {string} - The markdown link.
  */
 function createLink(text: string, fragment: string): string {
   return '[' + text + '](#' + fragment + ')';
