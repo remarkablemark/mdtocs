@@ -28,13 +28,13 @@ mdtocs('# Hello, World!'); // '- [Hello, World!](#hello-world)'
 [NPM](https://www.npmjs.com/package/mdtocs):
 
 ```sh
-$ npm install mdtocs --save
+npm install mdtocs --save
 ```
 
 [Yarn](https://yarnpkg.com/package/mdtocs):
 
 ```sh
-$ yarn add mdtocs
+yarn add mdtocs
 ```
 
 [CDN](https://unpkg.com/mdtocs/):
@@ -87,25 +87,25 @@ mdtocs(); // TypeError: First argument must be a string
 Run tests with coverage:
 
 ```sh
-$ npm test
+npm test
 ```
 
 Run tests in watch mode:
 
 ```sh
-$ npm run test:watch
+npm run test:watch
 ```
 
 Lint files:
 
 ```sh
-$ npm run lint
+npm run lint
 ```
 
 Fix lint errors:
 
 ```sh
-$ npm run lint:fix
+npm run lint:fix
 ```
 
 ## Release
@@ -113,8 +113,8 @@ $ npm run lint:fix
 Only collaborators with credentials can release and publish:
 
 ```sh
-$ npm run release
-$ git push --follow-tags && npm publish
+npm run release
+git push --follow-tags && npm publish
 ```
 
 ## License
