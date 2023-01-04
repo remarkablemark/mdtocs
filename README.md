@@ -21,7 +21,7 @@ const { mdtocs } = require('mdtocs');
 mdtocs('# Hello, World!'); // '- [Hello, World!](#hello-world)'
 ```
 
-[Site](https://b.remarkabl.org/mdtocs) | [Repl.it](https://repl.it/@remarkablemark/mdtocs) | [JSFiddle](https://jsfiddle.net/remarkablemark/dr03pLxn/)
+[Site](https://b.remarkabl.org/mdtocs) | [Replit](https://replit.com/@remarkablemark/mdtocs) | [JSFiddle](https://jsfiddle.net/remarkablemark/dr03pLxn/)
 
 ## Install
 
