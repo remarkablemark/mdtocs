@@ -5,9 +5,7 @@ import {
   INVALID_FRAGMENT_REGEX,
   WHITESPACE_REGEX,
 } from '../constants';
-import type { Heading } from '../types';
-
-type Fragments = Record<string, number>;
+import type { Fragments, Heading } from '../types';
 
 /**
  * Parses headings from markdown.
