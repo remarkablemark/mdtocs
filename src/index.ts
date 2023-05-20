@@ -28,11 +28,12 @@ const HEADINGS_REGEX = /^(#{1,6}[ \t].+)$|^(.+[\r\n][=-]{3,})$/gm;
 const HEADING_REGEX = /^(#+)[ \t](.+)$|^(.+)[\r\n]([=-])/;
 const HYPHEN = '-';
 
-type Heading = {
+interface Heading {
   level: number;
   text: string;
   fragment: string;
-};
+}
+
 type Fragments = Record<string, number>;
 
 /**
