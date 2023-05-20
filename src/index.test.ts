@@ -1,9 +1,14 @@
-const { readFile } = require('fs').promises;
-const { resolve } = require('path');
+import { promises } from 'fs';
+import { resolve } from 'path';
 import { mdtocs } from '.';
 
+const { readFile } = promises;
+
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const noop = () => {};
+
 describe('error', () => {
-  it.each([undefined, null, 0, 1, {}, [], () => {}, new Date(), Symbol()])(
+  it.each([undefined, null, 0, 1, {}, [], noop, new Date(), Symbol()])(
     'throws when first argument=%p',
     (value) => {
       expect(() => {
