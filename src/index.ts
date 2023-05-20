@@ -1,4 +1,4 @@
-import { parse, transformMarkdownHeadings, validate } from './utils';
+import { parse, transform, validate } from './utils';
 
 /**
  * Generates table of contents given Markdown.
@@ -9,5 +9,5 @@ import { parse, transformMarkdownHeadings, validate } from './utils';
  */
 export function mdtocs(markdown: string): string {
   validate(markdown);
-  return transformMarkdownHeadings(parse(markdown));
+  return transform(parse(markdown));
 }

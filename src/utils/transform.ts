@@ -2,9 +2,9 @@ import { BULLET, INDENT, NEWLINE } from '../constants';
 import type { Heading } from '../types';
 
 /**
- * Transforms parsed markdown headings to table of contents list.
+ * Transforms parsed Markdown headings to table of contents list.
  */
-export function transformMarkdownHeadings(headings: Heading[]): string {
+export function transform(headings: Heading[]): string {
   return headings.reduce((accumulator, heading) => {
     const { level, text, fragment } = heading;
     return (
@@ -22,7 +22,7 @@ export function transformMarkdownHeadings(headings: Heading[]): string {
  *
  * @param text - The heading text.
  * @param fragment - The fragment.
- * @returns - The markdown link.
+ * @returns - The Markdown link.
  */
 function createLink(text: string, fragment: string): string {
   return '[' + text + '](#' + fragment + ')';
