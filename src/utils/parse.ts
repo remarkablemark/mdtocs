@@ -8,12 +8,12 @@ import {
 import type { Fragments, Heading } from '../types';
 
 /**
- * Parses headings from markdown.
+ * Parses headings from Markdown.
  *
- * @param markdown - The markdown.
+ * @param markdown - The Markdown.
  * @returns - The headings.
  */
-export function parseMarkdownHeadings(markdown: string): Heading[] {
+export function parse(markdown: string): Heading[] {
   const headings = markdown.match(HEADINGS_REGEX);
 
   if (headings === null) {
@@ -41,7 +41,7 @@ export function parseMarkdownHeadings(markdown: string): Heading[] {
 /**
  * Gets heading level and text.
  *
- * @param heading - The markdown heading.
+ * @param heading - The Markdown heading.
  * @returns - The heading level and text.
  */
 function getHeadingLevelAndText(heading: string): [] | [number, string] {

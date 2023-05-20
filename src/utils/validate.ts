@@ -1,7 +1,7 @@
 /**
- * Validates markdown.
+ * Validates Markdown.
  *
- * @param markdown - The markdown.
+ * @param markdown - The Markdown.
  * @throws - The first argument must be a string.
  */
 export function validate(markdown: string): void {

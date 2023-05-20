@@ -1,12 +1,12 @@
-import { parseMarkdownHeadings } from './parse';
+import { parse } from './parse';
 
-describe('parseMarkdownHeadings', () => {
+describe('parse', () => {
   it('returns empty array if markdown does not match headings', () => {
-    expect(parseMarkdownHeadings('')).toEqual([]);
+    expect(parse('')).toEqual([]);
   });
 
   it('returns array if markdown matches headings', () => {
-    expect(parseMarkdownHeadings('# heading')).toMatchInlineSnapshot(`
+    expect(parse('# heading')).toMatchInlineSnapshot(`
       [
         {
           "fragment": "heading",
