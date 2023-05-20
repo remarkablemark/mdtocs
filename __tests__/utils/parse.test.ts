@@ -1,4 +1,4 @@
-import { parse } from './parse';
+import { parse } from '../../src/utils/parse';
 
 describe('parse', () => {
   it('returns empty array if markdown does not match headings', () => {
