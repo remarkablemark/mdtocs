@@ -3,9 +3,6 @@ import { terser } from 'rollup-plugin-terser';
 
 /**
  * Build rollup config for development (default) or production (minify = true).
- *
- * @param {Boolean} [minify=false]
- * @return {Object}
  */
 const config = (minify = false) => ({
   input: 'src/index.ts',
