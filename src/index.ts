@@ -1,14 +1,12 @@
 import {
-  BULLET,
   HEADING_REGEX,
   HEADINGS_REGEX,
   HYPHEN,
-  INDENT,
   INVALID_FRAGMENT_REGEX,
-  NEWLINE,
   WHITESPACE_REGEX,
 } from './constants';
-import { validateMarkdown } from './utils';
+import type { Heading } from './types';
+import { transformMarkdownHeadings, validateMarkdown } from './utils';
 
 /**
  * Generates table of contents given Markdown.
@@ -19,12 +17,6 @@ import { validateMarkdown } from './utils';
 export function mdtocs(markdown: string): string {
   validateMarkdown(markdown);
   return transformMarkdownHeadings(parseMarkdownHeadings(markdown));
-}
-
-interface Heading {
-  level: number;
-  text: string;
-  fragment: string;
 }
 
 type Fragments = Record<string, number>;
@@ -110,22 +102,6 @@ function getHeadingLevelAndText(heading: string): [] | [number, string] {
 }
 
 /**
- * Transforms parsed markdown headings to table of contents list.
- */
-function transformMarkdownHeadings(headings: Heading[]): string {
-  return headings.reduce((accumulator, heading) => {
-    const { level, text, fragment } = heading;
-    return (
-      accumulator +
-      INDENT.repeat(level - 1) +
-      BULLET +
-      createLink(text, fragment) +
-      NEWLINE
-    );
-  }, '');
-}
-
-/**
  * Creates fragment from heading text.
  *
  * @param text - The heading text.
@@ -148,15 +124,4 @@ function createFragment(text: string, fragments: Fragments): string {
 
   fragments[fragment] = 1;
   return fragment;
-}
-
-/**
- * Creates link from heading text and fragment.
- *
- * @param text - The heading text.
- * @param fragment - The fragment.
- * @returns - The markdown link.
- */
-function createLink(text: string, fragment: string): string {
-  return '[' + text + '](#' + fragment + ')';
 }
