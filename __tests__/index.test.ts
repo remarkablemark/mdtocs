@@ -1,7 +1,7 @@
 import { promises } from 'fs';
 import { resolve } from 'path';
 
-import { mdtocs } from '.';
+import { mdtocs } from '../src';
 
 const { readFile } = promises;
 

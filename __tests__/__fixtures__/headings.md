@@ -1,3 +1,5 @@
+<!-- prettier-ignore-start -->
+
 ###### Heading level 6
 
 #Paragraph
@@ -30,3 +32,5 @@ Alternate  heading  level  2
 ---
 
 # #
+
+<!-- prettier-ignore-end -->
