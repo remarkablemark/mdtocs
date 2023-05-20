@@ -1,3 +1,14 @@
+import {
+  BULLET,
+  HEADING_REGEX,
+  HEADINGS_REGEX,
+  HYPHEN,
+  INDENT,
+  INVALID_FRAGMENT_REGEX,
+  NEWLINE,
+  WHITESPACE_REGEX,
+} from './constants';
+
 /**
  * Generates table of contents given Markdown.
  *
@@ -20,13 +31,6 @@ function validateMarkdown(markdown: string): void {
     throw new TypeError('First argument must be a string');
   }
 }
-
-/**
- * @see {@link https://www.markdownguide.org/basic-syntax/}
- */
-const HEADINGS_REGEX = /^(#{1,6}[ \t].+)$|^(.+[\r\n][=-]{3,})$/gm;
-const HEADING_REGEX = /^(#+)[ \t](.+)$|^(.+)[\r\n]([=-])/;
-const HYPHEN = '-';
 
 interface Heading {
   level: number;
@@ -116,11 +120,6 @@ function getHeadingLevelAndText(heading: string): [] | [number, string] {
   return [level, text];
 }
 
-const SPACE = ' ';
-const INDENT = SPACE.repeat(2);
-const BULLET = HYPHEN + SPACE;
-const NEWLINE = '\n';
-
 /**
  * Transforms parsed markdown headings to table of contents list.
  */
@@ -136,9 +135,6 @@ function transformMarkdownHeadings(headings: Heading[]): string {
     );
   }, '');
 }
-
-const WHITESPACE_REGEX = /\s/;
-const INVALID_FRAGMENT_REGEX = /[^a-zA-Z0-9_-]/g;
 
 /**
  * Creates fragment from heading text.
