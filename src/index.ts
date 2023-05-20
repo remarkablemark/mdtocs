@@ -8,6 +8,7 @@ import {
   NEWLINE,
   WHITESPACE_REGEX,
 } from './constants';
+import { validateMarkdown } from './utils';
 
 /**
  * Generates table of contents given Markdown.
@@ -18,18 +19,6 @@ import {
 export function mdtocs(markdown: string): string {
   validateMarkdown(markdown);
   return transformMarkdownHeadings(parseMarkdownHeadings(markdown));
-}
-
-/**
- * Validates markdown.
- *
- * @param markdown - The markdown.
- * @throws - The first argument must be a string.
- */
-function validateMarkdown(markdown: string): void {
-  if (typeof markdown !== 'string') {
-    throw new TypeError('First argument must be a string');
-  }
 }
 
 interface Heading {
