@@ -8,6 +8,5 @@ import { parse, transform, validate } from './utils';
  * @throws - The first argument must be a string.
  */
 export function mdtocs(markdown: string): string {
-  validate(markdown);
-  return transform(parse(markdown));
+  return transform(parse(validate(markdown)));
 }
