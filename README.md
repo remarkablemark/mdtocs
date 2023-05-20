@@ -110,12 +110,7 @@ npm run lint:fix
 
 ## Release
 
-Only collaborators with credentials can release and publish:
-
-```sh
-npm run release
-git push --follow-tags && npm publish
-```
+Release is automated with [Release Please](https://github.com/googleapis/release-please).
 
 ## License
 
