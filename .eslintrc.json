@@ -5,11 +5,19 @@
   },
   "parser": "@typescript-eslint/parser",
   "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
-  "plugins": ["@typescript-eslint", "prettier", "tsdoc"],
+  "plugins": [
+    "@typescript-eslint",
+    "prettier",
+    "eslint-plugin-simple-import-sort",
+    "tsdoc"
+  ],
   "rules": {
     "no-console": "error",
     "no-debugger": "error",
     "prettier/prettier": "error",
+    "simple-import-sort/exports": "error",
+    "simple-import-sort/imports": "error",
+
     "tsdoc/syntax": "error"
   }
 }

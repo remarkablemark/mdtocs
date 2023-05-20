@@ -1,5 +1,6 @@
 import { promises } from 'fs';
 import { resolve } from 'path';
+
 import { mdtocs } from '.';
 
 const { readFile } = promises;
