@@ -16,7 +16,6 @@ import type { Fragments, Heading } from '../types';
 export function parseMarkdownHeadings(markdown: string): Heading[] {
   const headings = markdown.match(HEADINGS_REGEX);
 
-  /* istanbul ignore next */
   if (headings === null) {
     return [];
   }
