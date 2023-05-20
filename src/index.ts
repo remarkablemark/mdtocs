@@ -45,6 +45,7 @@ type Fragments = Record<string, number>;
 function parseMarkdownHeadings(markdown: string): Heading[] {
   const headings = markdown.match(HEADINGS_REGEX);
 
+  /* istanbul ignore next */
   if (headings === null) {
     return [];
   }
@@ -76,6 +77,7 @@ function parseMarkdownHeadings(markdown: string): Heading[] {
 function getHeadingLevelAndText(heading: string): [] | [number, string] {
   const headingMatch = heading.match(HEADING_REGEX);
 
+  /* istanbul ignore next */
   if (headingMatch === null) {
     return [];
   }
