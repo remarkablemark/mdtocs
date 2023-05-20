@@ -4,7 +4,7 @@
 
 [![NPM version](https://img.shields.io/npm/v/mdtocs.svg)](https://www.npmjs.com/package/mdtocs)
 [![Build Status](https://github.com/remarkablemark/mdtocs/workflows/build/badge.svg?branch=master)](https://github.com/remarkablemark/mdtocs/actions?query=workflow%3Abuild)
-[![Coverage Status](https://coveralls.io/repos/github/remarkablemark/mdtocs/badge.svg?branch=master)](https://coveralls.io/github/remarkablemark/mdtocs?branch=master)
+[![codecov](https://codecov.io/gh/remarkablemark/mdtocs/branch/master/graph/badge.svg?token=IK2QDLEOVB)](https://codecov.io/gh/remarkablemark/mdtocs)
 
 [Markdown](https://wikipedia.org/wiki/Markdown) table of contents generator:
 
