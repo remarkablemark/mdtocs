@@ -1,7 +1,7 @@
 import {
   parseMarkdownHeadings,
   transformMarkdownHeadings,
-  validateMarkdown,
+  validate,
 } from './utils';
 
 /**
@@ -9,8 +9,9 @@ import {
  *
  * @param markdown - The markdown.
  * @returns - The table of contents.
+ * @throws - The first argument must be a string.
  */
 export function mdtocs(markdown: string): string {
-  validateMarkdown(markdown);
+  validate(markdown);
   return transformMarkdownHeadings(parseMarkdownHeadings(markdown));
 }
