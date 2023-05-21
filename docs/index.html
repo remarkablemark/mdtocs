@@ -19,7 +19,7 @@
     />
     <link
       rel="stylesheet"
-      href="https://unpkg.com/material-components-web@8.0.0/dist/material-components-web.min.css"
+      href="https://unpkg.com/material-components-web@14.0.0/dist/material-components-web.min.css"
     />
     <link
       rel="stylesheet"
@@ -135,7 +135,7 @@
     <!--
       MDC Web JS: https://material-components.github.io/material-components-web-catalog/
     -->
-    <script src="https://unpkg.com/material-components-web@8.0.0/dist/material-components-web.min.js"></script>
+    <script src="https://unpkg.com/material-components-web@14.0.0/dist/material-components-web.min.js"></script>
 
     <!--
       Prettier: https://prettier.io/
@@ -174,7 +174,7 @@
           var md = new MDCTextField(textFields[0]);
           var toc = new MDCTextField(textFields[1]);
           var copyButton = new MDCRipple(document.querySelector('.mdc-button'));
-          var tocFloatLabel = toc.getLabelAdapterMethods_().floatLabel;
+          var tocFloatLabel = toc.getLabelAdapterMethods().floatLabel;
 
           // Generate table of contents from Markdown input
           md.listen('input', function (event) {
@@ -187,7 +187,7 @@
           // Copy table of contents to clipboard
           copyButton.listen('click', function (event) {
             toc.disabled = false;
-            toc.input_.select();
+            toc.input.select();
             toc.disabled = true;
 
             try {
