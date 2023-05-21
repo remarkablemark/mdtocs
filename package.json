@@ -10,15 +10,16 @@
     "build:umd": "rollup --config",
     "clean": "rm -rf cjs umd",
     "lint": "npm run lint:js && npm run lint:ts && npm run lint:tsc",
+    "lint:fix": "npm run lint:js -- --fix && npm run lint:ts -- --fix",
     "lint:js": "eslint --ignore-path .gitignore .",
     "lint:ts": "npm run lint:js -- --ext .ts",
     "lint:tsc": "tsc --noEmit",
-    "lint:fix": "npm run lint:js -- --fix && npm run lint:ts -- --fix",
-    "prepublishOnly": "pinst --disable && npm run lint && npm test && npm run clean && npm run build",
-    "test": "jest --coverage",
-    "test:watch": "jest --watch",
     "postinstall": "husky install",
-    "postpublish": "pinst --enable"
+    "postpublish": "pinst --enable",
+    "prepublishOnly": "pinst --disable && npm run lint && npm test && npm run clean && npm run build",
+    "size": "npm run build && size-limit",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch"
   },
   "homepage": "https://remarkablemark.org/mdtocs/",
   "repository": {
