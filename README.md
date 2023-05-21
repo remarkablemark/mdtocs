@@ -48,13 +48,15 @@ yarn add mdtocs
 
 ## Usage
 
-Import module:
+Import with ES Modules:
 
 ```js
-// ES Modules
 import { mdtocs } from 'mdtocs';
+```
 
-// CommonJS
+Or require with CommonJS:
+
+```js
 const { mdtocs } = require('mdtocs');
 ```
 
