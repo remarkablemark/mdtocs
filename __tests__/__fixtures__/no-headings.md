@@ -45,4 +45,19 @@ Code block
 ![](/image.png)
 
 ***
+
+```markdown
+# Heading inside code block
+```
+
+```python
+# comment
+```
+
+```
+## 2
+### 3
+
+#### 4
+```
 <!-- prettier-ignore-end -->
