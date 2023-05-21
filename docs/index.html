@@ -104,7 +104,11 @@
       <div>
         <button class="mdc-button mdc-button--raised">
           <span class="mdc-button__ripple"></span>
-          <i class="material-icons mdc-button__icon" aria-hidden="true">
+          <i
+            class="material-icons mdc-button__icon"
+            aria-hidden="true"
+            title="Copy Table of Contents"
+          >
             file_copy
           </i>
           <span class="mdc-button__label">Copy Table of Contents</span>
@@ -136,13 +140,65 @@
     <!--
       Prettier: https://prettier.io/
     -->
-    <script src="https://cdn.jsdelivr.net/npm/prettier@2.2.1/standalone.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/prettier@2.2.1/parser-markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prettier@2.8.8/standalone.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prettier@2.8.8/parser-markdown.js"></script>
 
     <!--
-      Custom script
+      mdtocs
     -->
-    <script src="script.js" async></script>
+    <script>
+      (function () {
+        // Load `mdtocs`
+        var script = document.createElement('script');
+        script.src =
+          location.hostname === ''
+            ? '../umd/mdtocs.min.js'
+            : 'https://unpkg.com/mdtocs@latest/umd/mdtocs.min.js';
+        document.body.append(script);
+
+        // Initialize app
+        script.addEventListener('load', function () {
+          var mdtocs = window.mdtocs.mdtocs;
+          var MDCTextField = window.mdc.textField.MDCTextField;
+          var MDCRipple = window.mdc.ripple.MDCRipple;
+          var prettier = window.prettier;
+          var prettierOptions = {
+            parser: 'markdown',
+            plugins: window.prettierPlugins,
+          };
+
+          // Instantiate MDC elements
+          var textFields = document.querySelectorAll(
+            '.mdc-text-field--textarea'
+          );
+          var md = new MDCTextField(textFields[0]);
+          var toc = new MDCTextField(textFields[1]);
+          var copyButton = new MDCRipple(document.querySelector('.mdc-button'));
+          var tocFloatLabel = toc.getLabelAdapterMethods_().floatLabel;
+
+          // Generate table of contents from Markdown input
+          md.listen('input', function (event) {
+            var markdown = event.target.value;
+            var tableOfContents = mdtocs(markdown);
+            tocFloatLabel(Boolean(tableOfContents));
+            toc.value = prettier.format(tableOfContents, prettierOptions);
+          });
+
+          // Copy table of contents to clipboard
+          copyButton.listen('click', function (event) {
+            toc.disabled = false;
+            toc.input_.select();
+            toc.disabled = true;
+
+            try {
+              navigator.clipboard.writeText(toc.value);
+            } catch (error) {
+              document.execCommand('copy');
+            }
+          });
+        });
+      })();
+    </script>
 
     <!--
       GitHub Corners: https://github.com/remarkablemark/github-corners
