@@ -15,7 +15,7 @@ describe('error', () => {
       expect(() => {
         mdtocs(value as string);
       }).toThrowError('First argument must be a string');
-    }
+    },
   );
 });
 
@@ -23,7 +23,7 @@ describe('mdtocs', () => {
   it('returns empty string for markdown with no headings', async () => {
     const markdown = await readFile(
       resolve(__dirname, '__fixtures__/no-headings.md'),
-      'utf8'
+      'utf8',
     );
     expect(mdtocs(markdown)).toBe('');
   });
@@ -81,7 +81,7 @@ Heading 2
   it('generates table of contents for markdown with headings', async () => {
     const markdown = await readFile(
       resolve(__dirname, '__fixtures__/headings.md'),
-      'utf8'
+      'utf8',
     );
     expect(mdtocs(markdown)).toMatchSnapshot();
   });
