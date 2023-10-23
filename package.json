@@ -43,7 +43,7 @@
     "@commitlint/cli": "18.0.0",
     "@commitlint/config-conventional": "18.0.0",
     "@rollup/plugin-typescript": "11.1.5",
-    "@size-limit/preset-small-lib": "9.0.0",
+    "@size-limit/preset-small-lib": "10.0.1",
     "@types/jest": "29.5.6",
     "@typescript-eslint/eslint-plugin": "6.8.0",
     "@typescript-eslint/parser": "6.8.0",
