@@ -41,7 +41,7 @@
   ],
   "devDependencies": {
     "@commitlint/cli": "18.0.0",
-    "@commitlint/config-conventional": "18.0.0",
+    "@commitlint/config-conventional": "18.1.0",
     "@rollup/plugin-typescript": "11.1.5",
     "@size-limit/preset-small-lib": "10.0.1",
     "@types/jest": "29.5.6",
