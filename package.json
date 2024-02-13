@@ -39,7 +39,7 @@
     "generator"
   ],
   "devDependencies": {
-    "@commitlint/cli": "18.6.0",
+    "@commitlint/cli": "18.6.1",
     "@commitlint/config-conventional": "18.6.0",
     "@rollup/plugin-typescript": "11.1.6",
     "@size-limit/preset-small-lib": "11.0.2",
