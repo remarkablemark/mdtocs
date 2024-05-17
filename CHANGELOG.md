@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.3](https://github.com/remarkablemark/mdtocs/compare/v1.0.2...v1.0.3) (2024-05-17)
+
+### Miscellaneous Chores
+
+- release 1.0.3 ([5e1ded3](https://github.com/remarkablemark/mdtocs/commit/5e1ded3e1e3eedd1adea42d2ad7d42cbf40db5a8))
+
 ## [1.0.2](https://github.com/remarkablemark/mdtocs/compare/v1.0.1...v1.0.2) (2023-05-21)
 
 ### Bug Fixes
