@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.0 (2024-05-17)
+
+
+### Bug Fixes
+
+* **utils:** clean code blocks with heading-like syntax ([fe856f2](https://github.com/remarkablemark/mdtocs/commit/fe856f293374bfe4bdb93f9d44a33b21c219fb5a)), closes [#201](https://github.com/remarkablemark/mdtocs/issues/201)
+
 ## [1.0.2](https://github.com/remarkablemark/mdtocs/compare/v1.0.1...v1.0.2) (2023-05-21)
 
 ### Bug Fixes
