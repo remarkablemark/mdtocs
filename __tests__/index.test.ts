@@ -5,7 +5,6 @@ import { mdtocs } from '../src';
 
 const { readFile } = promises;
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = () => {};
 
 describe('error', () => {
