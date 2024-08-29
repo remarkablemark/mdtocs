@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.4](https://github.com/remarkablemark/mdtocs/compare/v1.0.3...v1.0.4) (2024-08-29)
+
+
+### Continuous Integration
+
+* **github:** publish package to npm registry with provenance ([60945d6](https://github.com/remarkablemark/mdtocs/commit/60945d64387472b0d042783f8fa036cb5b70ec13))
+
 ## [1.0.3](https://github.com/remarkablemark/mdtocs/compare/v1.0.2...v1.0.3) (2024-05-17)
 
 ### Miscellaneous Chores
