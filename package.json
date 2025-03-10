@@ -21,7 +21,7 @@
   "homepage": "https://remarkablemark.org/mdtocs/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/remarkablemark/mdtocs"
+    "url": "git+https://github.com/remarkablemark/mdtocs.git"
   },
   "bugs": {
     "url": "https://github.com/remarkablemark/mdtocs/issues"
