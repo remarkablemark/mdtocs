@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-US">
   <head>
     <meta charset="utf-8" />
@@ -41,6 +41,10 @@
         max-width: 62.5rem; /* 1000px */
       }
 
+      .container {
+        display: flex;
+      }
+
       .mdc-text-field--textarea {
         margin-right: 0.5rem;
         margin-bottom: 1rem;
@@ -54,52 +58,54 @@
       <h1 class="mdc-typography--headline2 mdc-theme--primary">mdtocs</h1>
       <h2 class="mdc-typography--headline4">Markdown to Table of Contents</h2>
 
-      <label
-        class="mdc-text-field mdc-text-field--outlined mdc-text-field--textarea"
-      >
-        <span class="mdc-notched-outline">
-          <span class="mdc-notched-outline__leading"></span>
-          <span class="mdc-notched-outline__notch">
-            <span class="mdc-floating-label" id="md-label">Markdown</span>
-          </span>
-          <span class="mdc-notched-outline__trailing"></span>
-        </span>
-        <span class="mdc-text-field__resizer">
-          <textarea
-            class="mdc-text-field__input"
-            rows="10"
-            cols="50"
-            aria-labelledby="md-label"
-            aria-label="Markdown"
-            placeholder="Markdown"
-            autofocus
-          ></textarea>
-        </span>
-      </label>
-
-      <label
-        class="mdc-text-field mdc-text-field--outlined mdc-text-field--textarea mdc-text-field--disabled"
-      >
-        <span class="mdc-notched-outline">
-          <span class="mdc-notched-outline__leading"></span>
-          <span class="mdc-notched-outline__notch">
-            <span class="mdc-floating-label" id="toc-label">
-              Table of Contents
+      <div class="container">
+        <label
+          class="mdc-text-field mdc-text-field--outlined mdc-text-field--textarea"
+        >
+          <span class="mdc-notched-outline">
+            <span class="mdc-notched-outline__leading"></span>
+            <span class="mdc-notched-outline__notch">
+              <span class="mdc-floating-label" id="md-label">Markdown</span>
             </span>
+            <span class="mdc-notched-outline__trailing"></span>
           </span>
-          <span class="mdc-notched-outline__trailing"></span>
-        </span>
-        <span class="mdc-text-field__resizer">
-          <textarea
-            class="mdc-text-field__input"
-            rows="10"
-            cols="50"
-            aria-labelledby="toc-label"
-            aria-label="Table of Contents"
-            disabled
-          ></textarea>
-        </span>
-      </label>
+          <span class="mdc-text-field__resizer">
+            <textarea
+              class="mdc-text-field__input"
+              rows="10"
+              cols="50"
+              aria-labelledby="md-label"
+              aria-label="Markdown"
+              placeholder="Markdown"
+              autofocus
+            ></textarea>
+          </span>
+        </label>
+
+        <label
+          class="mdc-text-field mdc-text-field--outlined mdc-text-field--textarea mdc-text-field--disabled"
+        >
+          <span class="mdc-notched-outline">
+            <span class="mdc-notched-outline__leading"></span>
+            <span class="mdc-notched-outline__notch">
+              <span class="mdc-floating-label" id="toc-label">
+                Table of Contents
+              </span>
+            </span>
+            <span class="mdc-notched-outline__trailing"></span>
+          </span>
+          <span class="mdc-text-field__resizer">
+            <textarea
+              class="mdc-text-field__input"
+              rows="10"
+              cols="50"
+              aria-labelledby="toc-label"
+              aria-label="Table of Contents"
+              disabled
+            ></textarea>
+          </span>
+        </label>
+      </div>
 
       <div>
         <button class="mdc-button mdc-button--raised">
@@ -169,7 +175,7 @@
 
           // Instantiate MDC elements
           var textFields = document.querySelectorAll(
-            '.mdc-text-field--textarea'
+            '.mdc-text-field--textarea',
           );
           var md = new MDCTextField(textFields[0]);
           var toc = new MDCTextField(textFields[1]);
