@@ -1,9 +1,9 @@
 # mdtocs
 
-[![NPM](https://nodei.co/npm/mdtocs.png)](https://nodei.co/npm/mdtocs/)
+[![NPM](https://nodei.co/npm/mdtocs.png)](https://www.npmjs.com/package/mdtocs)
 
 [![NPM version](https://img.shields.io/npm/v/mdtocs.svg)](https://www.npmjs.com/package/mdtocs)
-[![Build Status](https://github.com/remarkablemark/mdtocs/workflows/build/badge.svg?branch=master)](https://github.com/remarkablemark/mdtocs/actions?query=workflow%3Abuild)
+[![build](https://github.com/remarkablemark/mdtocs/actions/workflows/build.yml/badge.svg)](https://github.com/remarkablemark/mdtocs/actions/workflows/build.yml)
 [![codecov](https://codecov.io/gh/remarkablemark/mdtocs/branch/master/graph/badge.svg?token=IK2QDLEOVB)](https://codecov.io/gh/remarkablemark/mdtocs)
 
 [Markdown](https://wikipedia.org/wiki/Markdown) table of contents generator:
@@ -21,7 +21,7 @@ const { mdtocs } = require('mdtocs');
 mdtocs('# Hello, World!'); // '- [Hello, World!](#hello-world)'
 ```
 
-[Site](https://b.remarkabl.org/mdtocs) | [Replit](https://replit.com/@remarkablemark/mdtocs) | [JSFiddle](https://jsfiddle.net/remarkablemark/dr03pLxn/)
+[Site](https://b.remarkabl.org/mdtocs) | [JSFiddle](https://jsfiddle.net/remarkablemark/dr03pLxn/)
 
 ## Install
 
