@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`mdtocs generates table of contents for markdown with all heading levels 1`] = `
 "- [Heading 1](#heading-1)

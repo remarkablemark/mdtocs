@@ -15,7 +15,7 @@
     "prepare": "husky",
     "prepublishOnly": "npm run lint && npm test && npm run clean && npm run build",
     "size": "npm run build && size-limit",
-    "test": "jest --coverage",
+    "test": "CI=true jest --ci --colors --coverage",
     "test:watch": "jest --watch"
   },
   "homepage": "https://remarkablemark.org/mdtocs/",
