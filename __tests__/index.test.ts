@@ -13,7 +13,7 @@ describe('error', () => {
     (value) => {
       expect(() => {
         mdtocs(value as string);
-      }).toThrowError('First argument must be a string');
+      }).toThrow('First argument must be a string');
     },
   );
 });
