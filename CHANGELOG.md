@@ -1,11 +1,20 @@
 # Changelog
 
-## [1.0.4](https://github.com/remarkablemark/mdtocs/compare/v1.0.3...v1.0.4) (2024-08-29)
+## [1.0.5](https://github.com/remarkablemark/mdtocs/compare/v1.0.4...v1.0.5) (2025-11-19)
 
+### Bug Fixes
+
+- **docs:** add display flex to container ([422985c](https://github.com/remarkablemark/mdtocs/commit/422985ccbf34bc4e6d98930d98e85497694fe56b))
+
+### Documentation
+
+- **readme:** fix links ([d18cb42](https://github.com/remarkablemark/mdtocs/commit/d18cb420fcfeeda08551d3cfee99d6bf469dd0d8))
+
+## [1.0.4](https://github.com/remarkablemark/mdtocs/compare/v1.0.3...v1.0.4) (2024-08-29)
 
 ### Continuous Integration
 
-* **github:** publish package to npm registry with provenance ([60945d6](https://github.com/remarkablemark/mdtocs/commit/60945d64387472b0d042783f8fa036cb5b70ec13))
+- **github:** publish package to npm registry with provenance ([60945d6](https://github.com/remarkablemark/mdtocs/commit/60945d64387472b0d042783f8fa036cb5b70ec13))
 
 ## [1.0.3](https://github.com/remarkablemark/mdtocs/compare/v1.0.2...v1.0.3) (2024-05-17)
 
