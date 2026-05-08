@@ -54,7 +54,7 @@
     "eslint-plugin-tsdoc": "0.5.2",
     "globals": "17.6.0",
     "husky": "9.1.7",
-    "jest": "30.3.0",
+    "jest": "30.4.1",
     "lint-staged": "17.0.3",
     "prettier": "3.8.3",
     "rollup": "4.60.3",
