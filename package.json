@@ -57,7 +57,7 @@
     "jest": "30.4.2",
     "lint-staged": "17.0.7",
     "prettier": "3.8.3",
-    "rollup": "4.61.0",
+    "rollup": "4.61.1",
     "size-limit": "12.1.0",
     "ts-jest": "29.4.11",
     "ts-node": "10.9.2",
