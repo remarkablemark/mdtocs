@@ -28,13 +28,7 @@ mdtocs('# Hello, World!'); // '- [Hello, World!](#hello-world)'
 [NPM](https://www.npmjs.com/package/mdtocs):
 
 ```sh
-npm install mdtocs --save
-```
-
-[Yarn](https://yarnpkg.com/package/mdtocs):
-
-```sh
-yarn add mdtocs
+npm install mdtocs
 ```
 
 [CDN](https://unpkg.com/mdtocs/):
