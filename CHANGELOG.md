@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.6](https://github.com/remarkablemark/mdtocs/compare/v1.0.5...v1.0.6) (2026-07-30)
+
+
+### Continuous Integration
+
+* **github:** migrate to trusted publishing (OIDC) in release-please.yml ([b23e96c](https://github.com/remarkablemark/mdtocs/commit/b23e96cec45e51b0958dfce8ee3731a89b647964))
+
 ## [1.0.5](https://github.com/remarkablemark/mdtocs/compare/v1.0.4...v1.0.5) (2025-11-19)
 
 ### Bug Fixes
