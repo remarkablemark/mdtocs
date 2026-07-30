@@ -2,7 +2,9 @@
   "compilerOptions": {
     "module": "commonjs",
     "strict": true,
-    "removeComments": true
+    "rootDir": "src",
+    "removeComments": true,
+    "types": ["jest", "node"]
   },
   "include": ["src"]
 }

@@ -12,7 +12,10 @@ const config = (minify = false) => ({
     name: 'mdtocs',
     sourcemap: true,
   },
-  plugins: [typescript({ module: 'es2015' }), minify && terser()],
+  plugins: [
+    typescript({ module: 'es2015', moduleResolution: 'bundler' }),
+    minify && terser(),
+  ],
 });
 
 export default [config(), config(true)];
