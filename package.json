@@ -44,7 +44,7 @@
     "@eslint/js": "10.0.1",
     "@rollup/plugin-terser": "1.0.0",
     "@rollup/plugin-typescript": "12.3.0",
-    "@size-limit/preset-small-lib": "13.0.2",
+    "@size-limit/preset-small-lib": "13.0.3",
     "@types/jest": "30.0.0",
     "@typescript-eslint/eslint-plugin": "8.65.0",
     "@typescript-eslint/parser": "8.65.0",
